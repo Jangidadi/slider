@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body{
-    font-family: poppins;
-    background-color:black;
-    color: white;
     margin: 0;
-    font-size: 15px;
+    background-color: #000;
+    color: #eee;
+    font-family: Poppins;
+    font-size: 12px;
 }
 a{
-   text-decoration: none;
-   color: white;
+    text-decoration: none;
 }
 header{
     width: 1140px;
@@ -21,58 +21,71 @@ header{
     z-index: 100;
 }
 header a{
+    color: #eee;
     margin-right: 40px;
 }
-.wrapper{
-    width: 100vw;
+.carousel{
     height: 100vh;
-    overflow: hidden;
     margin-top: -50px;
+    width: 100vw;
+    overflow: hidden;
     position: relative;
 }
-.wrapper .list .item{
+.carousel .list .item{
+    width: 100%;
+    height: 100%;
     position: absolute;
     inset: 0 0 0 0;
 }
-.wrapper .list .item img{
+.carousel .list .item img{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.wrapper .list .item .content {
+.carousel .list .item .content{
     position: absolute;
     top: 20%;
-    right: 30%;
     width: 1140px;
     max-width: 80%;
-    left: 40%;
-    transform: translateX(-50%);
+    left: 50%;
+    transform: translateX(-55%);
     padding-right: 30%;
     box-sizing: border-box;
-    color: white;
-    text-shadow: 0 5px 10px black;
+    color: #fff;
+    text-shadow: 0 5px 10px #0004;
 }
-.wrapper .list .item .author{
+.carousel .list .item .author{
     font-weight: bold;
     letter-spacing: 10px;
 }
-.wrapper .list .item .title,
-.wrapper .list .item .topic{
+.carousel .list .item .title,
+.carousel .list .item .topic{
     font-size: 5em;
     font-weight: bold;
     line-height: 1.3em;
 }
-.topic{
-    color: orangered;
+.carousel .list .item .topic{
+    color: #f1683a;
 }
-.button{
-    position: relative;
+.carousel .list .item .buttons{
     display: grid;
-    grid-template-columns: repeat(2, 100px);
+    grid-template-columns: repeat(2, 130px);
     grid-template-rows: 40px;
     gap: 5px;
-    margin-top: 80%;
-} 
+    margin-top: 20px;
+}
+.carousel .list .item .buttons button{
+    border: none;
+    background-color: #eee;
+    letter-spacing: 3px;
+    font-family: Poppins;
+    font-weight: 500;
+}
+.carousel .list .item .buttons button:nth-child(2){
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #eee;
+}
 .thumbnail{
     position: absolute;
     bottom: 50px;
@@ -95,18 +108,23 @@ header a{
     border-radius: 20px;
 }
 .thumbnail .item .content{
+    color: #fff;
     position: absolute;
     bottom: 10px;
     left: 10px;
     right: 10px;
 }
 .thumbnail .item .content .title{
-    font-weight: bold;
+    font-weight: 500;
+}
+.thumbnail .item .content .description{
+    font-weight: 300;
 }
 .arrows{
     position: absolute;
     top: 80%;
-    right:52%;
+    right: 52%;
+    z-index: 100;
     width: 300px;
     max-width: 30%;
     display: flex;
@@ -116,50 +134,52 @@ header a{
 .arrows button{
     width: 40px;
     height: 40px;
-    border-radius:50%;
+    border-radius: 50%;
     background-color: #eee4;
     border: none;
+    color: #fff;
     font-family: monospace;
-    color: white;
     font-weight: bold;
-    font-size: large;
     transition: .5s;
-    z-index: 100;
 }
 .arrows button:hover{
-    background-color: white;
-    color: #555;
+    background-color: #fff;
+    color: #000;
 }
-.wrapper .list .item:nth-child(1){
+.carousel .list .item:nth-child(1){
     z-index: 1;
 }
-.wrapper .list .item:nth-child(1) .author,
-.wrapper .list .item:nth-child(1) .title,
-.wrapper .list .item:nth-child(1) .topic,
-.wrapper .list .item:nth-child(1) .dis,
-.wrapper .list .item:nth-child(1) .des{
+.carousel .list .item:nth-child(1) .content .author,
+.carousel .list .item:nth-child(1) .content .title,
+.carousel .list .item:nth-child(1) .content .topic,
+.carousel .list .item:nth-child(1) .content .des,
+.carousel .list .item:nth-child(1) .content .buttons
+{
     transform: translateY(50px);
     filter: blur(20px);
     opacity: 0;
-    animation: showContent 0.5s 1s linear 1 forwards;
+    animation: showContent .5s 1s linear 1 forwards;
 }
 @keyframes showContent{
     to{
+        transform: translateY(0px);
+        filter: blur(0px);
         opacity: 1;
-        filter: blur(0);
-        transform: translateY(0);
     }
 }
-.wrapper .list .item:nth-child(1) .title{
-    animation-delay: 1.2s;
+.carousel .list .item:nth-child(1) .content .title{
+    animation-delay: 1.2s!important;
 }
-.wrapper .list .item:nth-child(1) .topic{
-    animation-delay: 1.4;
+.carousel .list .item:nth-child(1) .content .topic{
+    animation-delay: 1.4s!important;
 }
-.wrapper .list .item:nth-child(1) .des{
-    animation-delay: 1.6s;
+.carousel .list .item:nth-child(1) .content .des{
+    animation-delay: 1.6s!important;
 }
-.wrapper.next .list .item:nth-child(1) img{
+.carousel .list .item:nth-child(1) .content .buttons{
+    animation-delay: 1.8s!important;
+}
+.carousel.next .list .item:nth-child(1) img{
     width: 150px;
     height: 220px;
     position: absolute;
@@ -177,11 +197,11 @@ header a{
         border-radius: 0;
     }
 }
-.wrapper.next .thumbnail .item:nth-last-child(1){
+.carousel.next .thumbnail .item:nth-last-child(1){
     overflow: hidden;
     animation: showThumbnail .5s linear 1 forwards;
 }
-.wrapper.prev .list .item img{
+.carousel.prev .list .item img{
     z-index: 100;
 }
 @keyframes showThumbnail{
@@ -190,16 +210,15 @@ header a{
         opacity: 0;
     }
 }
-.wrapper.next .thumbnail{
+.carousel.next .thumbnail{
     animation: effectNext .5s linear 1 forwards;
 }
-
 @keyframes effectNext{
     from{
         transform: translateX(150px);
     }
 }
-.wrapper .time{
+.carousel .time{
     position: absolute;
     z-index: 1000;
     width: 0%;
@@ -208,18 +227,18 @@ header a{
     left: 0;
     top: 0;
 }
-.wrapper.next .time,
-.wrapper.prev .time{
+.carousel.next .time,
+.carousel.prev .time{
     animation: runningTime 3s linear 1 forwards;
 }
 @keyframes runningTime{
     from{ width: 100%}
     to{width: 0}
-} 
-.wrapper.prev .list .item:nth-child(2){
+}
+.carousel.prev .list .item:nth-child(2){
     z-index: 2;
 }
-.wrapper.prev .list .item:nth-child(2) img{
+.carousel.prev .list .item:nth-child(2) img{
     animation: outFrame 0.5s linear 1 forwards;
     position: absolute;
     bottom: 0;
@@ -234,20 +253,20 @@ header a{
         border-radius: 20px;
     }
 }
-.wrapper.prev .thumbnail .item:nth-child(1){
+.carousel.prev .thumbnail .item:nth-child(1){
     overflow: hidden;
     opacity: 0;
     animation: showThumbnail .5s linear 1 forwards;
 }
-.wrapper.next .arrows button,
-.wrapper.prev .arrows button{
+.carousel.next .arrows button,
+.carousel.prev .arrows button{
     pointer-events: none;
 }
-.wrapper.prev .list .item:nth-child(2) .content .author,
-.wrapper.prev .list .item:nth-child(2) .content .title,
-.wrapper.prev .list .item:nth-child(2) .content .topic,
-.wrapper.prev .list .item:nth-child(2) .content .des,
-.wrapper.prev .list .item:nth-child(2) .content .buttons
+.carousel.prev .list .item:nth-child(2) .content .author,
+.carousel.prev .list .item:nth-child(2) .content .title,
+.carousel.prev .list .item:nth-child(2) .content .topic,
+.carousel.prev .list .item:nth-child(2) .content .des,
+.carousel.prev .list .item:nth-child(2) .content .buttons
 {
     animation: contentOut 1.5s linear 1 forwards!important;
 }
@@ -259,10 +278,10 @@ header a{
     }
 }
 @media screen and (max-width: 678px) {
-    .wrapper .list .item .content{
+    .carousel .list .item .content{
         padding-right: 0;
     }
-    .wrapper .list .item .content .title{
+    .carousel .list .item .content .title{
         font-size: 30px;
     }
 }
